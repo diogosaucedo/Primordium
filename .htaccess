@@ -1,0 +1,7 @@
+RewriteEngine ON
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?pg=$1
+AddType 'text/html; charset=UTF-8' html
+AddCharset UTF-8 .pt
+AddCharset UTF-8 .html

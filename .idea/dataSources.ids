@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - primordium@localhost" uuid="cf74202e-72ca-4f64-9ba6-2c5b2398e0d6">
+    <database-info product="MySQL" version="5.6.15-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="primordium"/>
+    <table name="admin" schema="" catalog="primordium" type="TABLE">
+      <column name="id_admin" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nome_admin" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="senha" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="celular" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_admin"/>
+    </table>
+    <table name="categorias" schema="" catalog="primordium" type="TABLE">
+      <column name="id_categoria" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nome_categoria" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_categoria"/>
+      <exported-key name="chave_categoria" table="lojas" schema="" catalog="primordium" columns="id_categoria"/>
+    </table>
+    <table name="categorias_1" schema="" catalog="primordium" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nome_categoria" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="key_categoria_1" table="produtos_1" schema="" catalog="primordium" columns="id_categoria"/>
+    </table>
+    <table name="categorias_2" schema="" catalog="primordium" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nome_categoria" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="key_categoria_2" table="produtos_2" schema="" catalog="primordium" columns="id_categoria"/>
+    </table>
+    <table name="clientes" schema="" catalog="primordium" type="TABLE">
+      <column name="id_cliente" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nome" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="senha" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="celular" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="cnpj" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_cliente"/>
+      <exported-key name="chave_dono" table="lojas" schema="" catalog="primordium" columns="id_dono"/>
+    </table>
+    <table name="lojas" schema="" catalog="primordium" type="TABLE">
+      <column name="id_loja" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_categoria" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id_dono" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="razao_social" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nome_fantasia" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="inscricao_estadual" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="isento" sqlType="VARCHAR" precision="3" scale="0" nullable="true" jdbcType="12"/>
+      <column name="optante_pelo_simples" sqlType="VARCHAR" precision="3" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_loja"/>
+      <foreign-key name="chave_categoria" columns="id_categoria" ref-table="categorias" ref-schema="" ref-catalog="primordium" ref-columns="id_categoria" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="chave_dono" columns="id_dono" ref-table="clientes" ref-schema="" ref-catalog="primordium" ref-columns="id_cliente" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="chave_categoria" unique="false" columns="id_categoria"/>
+      <index name="chave_dono" unique="false" columns="id_dono"/>
+    </table>
+    <table name="pedidos_1" schema="" catalog="primordium" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="pedido" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="nome" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="celular" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="endereco" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="status" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="pedidos_2" schema="" catalog="primordium" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="pedido" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="nome" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="celular" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="endereco" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="status" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="produtos_1" schema="" catalog="primordium" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_categoria" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nome_produto" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="img_1" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="img_2" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="img_3" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="descricao" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="identificador" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="peso" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="key_categoria_1" columns="id_categoria" ref-table="categorias_1" ref-schema="" ref-catalog="primordium" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+      <index name="key_categoria_1" unique="false" columns="id_categoria"/>
+    </table>
+    <table name="produtos_2" schema="" catalog="primordium" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_categoria" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nome_produto" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="img_1" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="img_2" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="img_3" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="descricao" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="identificador" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="peso" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="key_categoria_2" columns="id_categoria" ref-table="categorias_2" ref-schema="" ref-catalog="primordium" ref-columns="id" update-rule="0" delete-rule="3" deferrability="2"/>
+      <index name="key_categoria_2" unique="false" columns="id_categoria"/>
+    </table>
+    <table name="usuarios" schema="" catalog="primordium" type="TABLE">
+      <column name="id_usuario" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nome_usuario" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="senha" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="celular" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_usuario"/>
+    </table>
+  </data-source>
+</component>
